@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.models;
 
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -32,9 +33,25 @@ public class Episodio {
     @Override
     public String toString() {
         return  "temporada=" + temporada +
-                ", titulo='" + titulo + '\'' +
-                ", numeroEpisodio=" + numeroEpisodio +
-                ", avaliacao=" + avaliacao +
-                ", dataLancamento=" + dataLancamento ;
+                ", titulo= " + titulo +
+                ", numeroEpisodio= " + numeroEpisodio +
+                ", avaliacao= " + avaliacao +
+                ", dataLancamento= " + dataLancamento ;
+    }
+
+    public LocalDate getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public int getTemporada() {
+        return temporada;
+    }
+
+    public double getAvaliacao() {
+        return avaliacao;
     }
 }
