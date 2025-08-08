@@ -70,7 +70,7 @@ public class Principal {
 //                .peek(e -> System.out.println("Ordenacao "+ e))
 //                .limit(10)
 //                .peek(e -> System.out.println("Limite " + e))
-//                .map(e -> e.titulo().toUpperCase())
+//                 .map(e -> e.titulo().toUpperCase())
 //                .peek(e -> System.out.println("Mapeamento "+e))
 //                .forEach(System.out::println);
 
