@@ -178,7 +178,7 @@ public class Principal {
         var nomeAtor = leitura.nextLine();
         System.out.println("Avaliacoes a partir que valor? ");
         var avaliacao = leitura.nextDouble();
-        List<Serie> seriesEncontradas = repositorio.findByAutoresContainingIgnoreCaseAndAvaliacaoGreaterThanEqual(nomeAtor, avaliacao);
+        List<Serie> seriesEncontradas = repositorio.findByAtoresContainingIgnoreCaseAndAvaliacaoGreaterThanEqual(nomeAtor, avaliacao);
         System.out.println("Series em que "+ nomeAtor+ " trabalhou");
 
         seriesEncontradas.forEach(s ->

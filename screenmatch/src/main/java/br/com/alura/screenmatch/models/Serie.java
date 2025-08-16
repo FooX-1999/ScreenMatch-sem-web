@@ -21,7 +21,7 @@ public class Serie {
     private double avaliacao;
     @Enumerated(EnumType.STRING)
     private Categoria genero;
-    private String autores;
+    private String atores;
     private String poster;
     private String sinopse;
 
@@ -38,7 +38,7 @@ public class Serie {
         this.totalTemporadas = dadosSerie.totalTemporadas();
         this.avaliacao = OptionalDouble.of(Double.valueOf(dadosSerie.avaliacao())).orElse(0);
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim());
-        this.autores = dadosSerie.autores();
+        this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
         this.sinopse = dadosSerie.sinopse();
 //        this.sinopse = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse().trim());
@@ -94,11 +94,11 @@ public class Serie {
     }
 
     public String getAutores() {
-        return autores;
+        return atores;
     }
 
     public void setAutores(String autores) {
-        this.autores = autores;
+        this.atores = autores;
     }
 
     public String getPoster() {
@@ -124,7 +124,7 @@ public class Serie {
                 " titulo= '" + titulo + '\'' +
                 ", totalTemporadas= '" + totalTemporadas +
                 ", avaliacao= '" + avaliacao + '\'' +
-                ", autores= '" + autores + '\'' +
+                ", autores= '" + atores + '\'' +
                 ", poster= '" + poster + '\'' +
                 ", sinopse= '" + sinopse + '\'' +
                 ", episodios= '" + episodios + '\'';

@@ -1,6 +1,8 @@
 package br.com.alura.screenmatch.service;
 
+import br.com.alura.screenmatch.dto.EpisodioDTO;
 import br.com.alura.screenmatch.dto.SerieDTO;
+import br.com.alura.screenmatch.models.Categoria;
 import br.com.alura.screenmatch.models.Serie;
 import br.com.alura.screenmatch.repository.SerieRepository;
 
@@ -30,7 +32,7 @@ public class SerieService {
                 .collect(Collectors.toList());
     }
 
-    public List<SerieDTO> obterLnacamentos() {
+    public List<SerieDTO> obterLancamentos() {
         return converteDados(respositorio.lancamentosMaisRecentes());
     }
 
@@ -41,5 +43,27 @@ public class SerieService {
             return new SerieDTO(s.getId(), s.getTitulo(), s.getTotalTemporadas(), s.getAvaliacao(), s.getGenero(), s.getAutores(), s.getPoster(), s.getSinopse());
         }
         return null;
+    }
+
+    public List<EpisodioDTO> obterTodasTemporadas(Long id) {
+        Optional<Serie> serie = respositorio.findById(id);
+        if (serie.isPresent()){
+            Serie s = serie.get();
+            return s.getEpisodios().stream()
+                    .map(e -> new EpisodioDTO(e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()))
+                    .collect(Collectors.toList());
+        }
+        return null;
+    }
+
+    public List<EpisodioDTO> obterTemporadasPorNumeros(Long id, Long numero) {
+        return respositorio.obterEpisodioPorTemporada(id, numero).stream()
+                .map(e -> new EpisodioDTO(e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()))
+                .collect(Collectors.toList());
+    }
+
+    public List<SerieDTO> obterSeriesPorCategorias(String nomeGenero) {
+        Categoria categoria = Categoria.fromPortugues(nomeGenero);
+        return converteDados(respositorio.findByGenero(categoria));
     }
 }
