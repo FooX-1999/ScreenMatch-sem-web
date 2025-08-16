@@ -19,17 +19,17 @@ public class Serie {
     private String titulo;
     private int totalTemporadas;
     private double avaliacao;
+    @Enumerated(EnumType.STRING)
+    private Categoria genero;
+    private String autores;
+    private String poster;
+    private String sinopse;
 
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios = new ArrayList<>();
 
 
 
-    @Enumerated(EnumType.STRING)
-    private Categoria genero;
-    private String autores;
-    private String poster;
-    private String sinopse;
 
     public Serie(){}
 
